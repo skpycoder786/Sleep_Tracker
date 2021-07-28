@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0", charset="UTF-8">
-        <title>Home</title>
-        <link rel="stylesheet" type="text/css" href="css/sleep.css">
-        <script src="js/sleep.js"></script>
+      <meta charset="UTF-8">
+      <title>Sleep Tracker</title>
+      <link rel="stylesheet" href="CSS/main.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet"> 
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script type="text/javascript" src="JS/jquery/jquery-1.4.4.min.js"></script>
+      <script type="text/javascript" src="JS/json2.js"></script>
+      <script type="text/javascript" src="JS/main.js"></script>
+      <script>
+        $(document).ready(function () {
+            details = $("#time");
+
+            $("#create").click(function () {
+                show();
+            });
+            if (count === 0) {
+                show();
+            }
+        });
+
+      </script>
+
     </head>
     <body>
 
@@ -21,22 +43,22 @@
 
                     <input type="button" value="ADD" id="create">
 
-            <div id="date">
-            <table>
-                <tr>
-                <th>Date</th>
-                <th>Sleeping Time</th>
-                <th>Waking Time</th>
-                </tr>
-                <tbody id="time">
-                </tbody>
-            </table>
-            </div>
+                    <div id="date">
+                    <table>
+                        <tr>
+                        <th>Date</th>
+                        <th>Sleeping Time</th>
+                        <th>Waking Time</th>
+                        </tr>
+                        <tbody id="time">
+                        </tbody>
+                    </table>
+                    </div>
 
                     <div id="button">     
                         <input type="reset" name="reset button" value="Reset">
                         <br>
-                        <input type="submit" name="submit button" value="Analyse" >
+                        <input type="submit" value="Analyse" onclick="analyse()" name="submit button">
                     </div>
 
                 </form>
