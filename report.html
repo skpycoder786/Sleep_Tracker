@@ -47,9 +47,7 @@
         </div>
 
         <div id="result">
-            <h3>Overall Avarage Sleep Time = 10:45</h3>
-            <h3>Overall Avarage Wakeup Time = 06:15</h3>
-            <h3>Overall Avarage Sleep Duration = 07:30</h3>
+            
         </div>
 
         <div id="barchart">
@@ -57,8 +55,19 @@
             <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
             <script> 
+            var sum=0
             var xValues = JSON.parse(localStorage["date"]);
             var yValues = JSON.parse(localStorage["diff"]);
+            for (var i=0;i<yValues.length;i++){
+                sum+=yValues[i]*60;
+            }
+            avg=sum/yValues.length;
+            console.log(avg);
+            
+            var hrs = Math.floor(avg / 60);
+            avg = avg % 60;
+            console.log("In hours: "+ hrs + " hours, " + avg + " minutes");
+            document.getElementById('result').innerHTML="<h3>Overall Average Sleep Duration = "+ hrs + " hours, " + avg + " minutes"+ "</h3>"
             console.log(yValues+"   vt bhai");
             new Chart("myChart", {
             type: "line",
