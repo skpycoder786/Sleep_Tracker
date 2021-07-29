@@ -1,65 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0", charset="UTF-8">
-        <title>Sleep Report</title>
-        <link rel="stylesheet" type="text/css" href="css/sleep.css">
-        <script src="js/sleep.js"></script>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+    <link rel="stylesheet" href="CSS/main.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="JS/jquery/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="JS/json2.js"></script>
+    <script type="text/javascript" src="JS/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+        $(document).ready(function () {
+            timediff = $("#time_diff");
+            diff();
+        });
+    </script>
+</head>
+<body>
+    
+    <header id="Header">
+        <h1>Daily Sleep Tracker</h1><hr>
+    </header>
 
-        <header id="Header">
-            <h1>Daily Sleep Tracker</h1><hr>
-        </header>
+    <main>
 
-        <main>
+        <div id="tagline">
+            <h2>Analysis Report</h2>
+        </div>
+         
+        <div class="Table">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Day Number</th>
+                        <th>Sleep Time</th>
+                        <th>WakeUp Time</th>
+                        <th>Sleep Duration</th>
+                    </tr>
+                </thead>
+                <tbody id="time_diff">
+                    
+                </tbody>
+            </table>
+        </div>
 
-            <div id="tagline">
-                <h2>Analysis Report</h2>
-            </div>
-             
-            <div class="Table">
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Day Number</th>
-                            <th>Sleep Time</th>
-                            <th>WakeUp Time</th>
-                            <th>Sleep Duration</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>22:15</td>
-                            <td>05:15</td> 
-                            <td>07:00</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>23:15</td>
-                            <td>07:15</td>
-                            <td>08:00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div id="result">
+            <h3>Overall Avarage Sleep Time = 10:45</h3>
+            <h3>Overall Avarage Wakeup Time = 06:15</h3>
+            <h3>Overall Avarage Sleep Duration = 07:30</h3>
+        </div>
 
-            <div id="result">
-                <h3>Overall Avarage Sleep Time = 10:45</h3>
-                <h3>Overall Avarage Wakeup Time = 06:15</h3>
-                <h3>Overall Avarage Sleep Duration = 07:30</h3>
-            </div>
+        <div id="barchart">
+            
+            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
-            <div id="barchart">
-                <img src="images/bar.png" height="400" width="600" >
-            </div>
+            <script> 
+            var xValues = JSON.parse(localStorage["date"]);
+            var yValues = JSON.parse(localStorage["diff"]);
+            console.log(yValues+"   vt bhai");
+            new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                scales: {
+                yAxes: [{ticks: {min: 0, max:24}}],
+                }
+            }
+            });
+            </script>
+            
+        </div>
         
-        </main>
+    </main>
 
-        <footer id="Footer">
-            <hr><h5>Designed and Developed by "Team Absolut B"</h5>
-        </footer>
+    <footer id="Footer">
+        <hr><h5>Designed and Developed by "Team Absolut B"</h5>
+    </footer>
 
-    </body>
+</body>
 </html>
