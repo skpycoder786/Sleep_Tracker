@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Report</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="CSS/main.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,20 +20,21 @@
 </head>
 <body>
     
-    <div class="page2">
-      <div class="new_report">
-        <div class="navbar">
-          <h1 class="text">Absolute&nbsp B</h1>
-        </div>
+    <header id="Header">
+        <h1>Daily Sleep Tracker</h1><hr>
+    </header>
+
+    <main>
+
         <div id="tagline">
             <h2>Analysis Report</h2>
         </div>
          
         <div class="Table">
-            <table border="1" style="border-color: #fff;" cellpadding= "10">
+            <table border="1">
                 <thead>
                     <tr>
-                        <th>Date</th>
+                        <th>Day Number</th>
                         <th>Sleep Time</th>
                         <th>WakeUp Time</th>
                         <th>Sleep Duration</th>
@@ -46,9 +47,7 @@
         </div>
 
         <div id="result">
-            <h3>Overall Avarage Sleep Time = 10:45</h3>
-            <h3>Overall Avarage Wakeup Time = 06:15</h3>
-            <h3>Overall Avarage Sleep Duration = 07:30</h3>
+            
         </div>
 
         <div id="barchart">
@@ -56,8 +55,19 @@
             <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
             <script> 
+            var sum=0
             var xValues = JSON.parse(localStorage["date"]);
             var yValues = JSON.parse(localStorage["diff"]);
+            for (var i=0;i<yValues.length;i++){
+                sum+=yValues[i]*60;
+            }
+            avg=sum/yValues.length;
+            console.log(avg);
+            
+            var hrs = Math.floor(avg / 60);
+            avg = avg % 60;
+            console.log("In hours: "+ hrs + " hours, " + avg + " minutes");
+            document.getElementById('result').innerHTML="<h3>Overall Average Sleep Duration = "+ hrs + " hours, " + avg + " minutes"+ "</h3>"
             console.log(yValues+"   vt bhai");
             new Chart("myChart", {
             type: "line",
@@ -81,8 +91,12 @@
             </script>
             
         </div>
-      </div>
-    </div>
+        
+    </main>
+
+    <footer id="Footer">
+        <hr><h5>Designed and Developed by "Team Absolut B"</h5>
+    </footer>
 
 </body>
 </html>
