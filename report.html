@@ -20,18 +20,17 @@
 </head>
 <body>
     
-    <header id="Header">
-        <h1>Daily Sleep Tracker</h1><hr>
-    </header>
-
-    <main>
-
+    <div class="page2">
+      <div class="new_report">
+        <div class="navbar">
+          <h1 class="text">Absolute&nbsp B</h1>
+        </div>
         <div id="tagline">
             <h2>Analysis Report</h2>
         </div>
          
         <div class="Table">
-            <table border="1">
+            <table border="1" style="border-color: #fff;" cellpadding= "10">
                 <thead>
                     <tr>
                         <th>Day Number</th>
@@ -46,7 +45,7 @@
             </table>
         </div>
 
-        <div id="result">
+       <div id="result">
             
         </div>
 
@@ -54,7 +53,7 @@
             
             <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
-            <script> 
+             <script> 
             var sum=0
             var xValues = JSON.parse(localStorage["date"]);
             var yValues = JSON.parse(localStorage["diff"]);
@@ -90,13 +89,10 @@
             });
             </script>
             
+            
         </div>
-        
-    </main>
-
-    <footer id="Footer">
-        <hr><h5>Designed and Developed by "Team Absolut B"</h5>
-    </footer>
+      </div>
+    </div>
 
 </body>
 </html>
