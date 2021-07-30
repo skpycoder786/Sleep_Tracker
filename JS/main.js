@@ -10,7 +10,7 @@ function show() {
                     '<td><input type="date" name="date" id="da'+count+'" class="da"></td>'+
                     '<td><input type="time" name="st" id="st'+count+'" class="st"></td>'+
                     '<td><input type="time" name="wt" id="wt'+count+'" class="wt"></td>'+
-                    '<td><img class= "close" src="images/close.png"/></td>'+
+                    '<td><img class= "close" src="images/cross.png"/></td>'+
                     '</tr>');
         var last = details.find("tr:last");
         last.find("img").click(function () {
